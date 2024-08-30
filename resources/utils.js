@@ -16,9 +16,20 @@ const jsonLocalStorage = {
   },
 };
 
+// const fetchCat = async (text) => {
+//   const OPEN_API_DOMAIN = "https://cataas.com";
+//   const response = await fetch(`${OPEN_API_DOMAIN}/cat/says/${text}?json=true`);
+//   const responseJson = await response.json();
+//   return `${OPEN_API_DOMAIN}/cat/${responseJson._id}/says/${text}`; // NOTE: API 스펙 변경으로 강의 영상과 다른 URL로 변경했습니다.
+// };
+
+// API 스펙 변경으로 인한 fetchCat
 const fetchCat = async (text) => {
-  const OPEN_API_DOMAIN = "https://cataas.com";
-  const response = await fetch(`${OPEN_API_DOMAIN}/cat/says/${text}?json=true`);
+  const OPEN_API_DOMAIN = "https://http.cat";
+  const response = await fetch(
+    // `${OPEN_API_DOMAIN}/${text}.jpg`
+    `https://dog.ceo/api/breeds/image/random`
+  );
   const responseJson = await response.json();
-  return `${OPEN_API_DOMAIN}/cat/${responseJson._id}/says/${text}`; // NOTE: API 스펙 변경으로 강의 영상과 다른 URL로 변경했습니다.
+  return `${responseJson.url}`; // NOTE: API 스펙 변경으로 강의 영상과 다른 URL로 변경했습니다.
 };
